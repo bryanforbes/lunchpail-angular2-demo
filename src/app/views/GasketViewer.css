@@ -1,0 +1,19 @@
+:host {
+	display: flex;
+	height: 100%;
+	position: relative;
+	width: 100%;
+}
+
+:host > .list {
+	border-right: 1px solid black;
+	flex: 0 0 300px;
+	display: block;
+	margin: 0;
+}
+
+:host > .viewer {
+	flex: 1 1 calc(100% - 300px);
+	display: block;
+	padding-left: 10px;
+}

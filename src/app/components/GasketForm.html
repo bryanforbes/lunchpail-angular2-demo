@@ -1,0 +1,11 @@
+<form #f="form" (ng-submit)="onSubmit()">
+	<label>
+		OD: <input type="text" ng-control="outerDiameter"
+				   [(ng-model)]="gasket.outerDiameter" required>
+	</label>
+	<label>
+		ID: <input type="text" ng-control="innerDiameter"
+				   [(ng-model)]="gasket.innerDiameter" required>
+	</label>
+	<button type="submit" [disabled]="!f.valid">Submit</button>
+</form>

@@ -1,0 +1,9 @@
+<form [ng-form-model]="form" (ng-submit)="onSubmit()">
+	<label>
+		OD: <input type="text" ng-control="outerDiameter">
+	</label>
+	<label>
+		ID: <input type="text" ng-control="innerDiameter">
+	</label>
+	<button type="submit" [disabled]="!form.valid">Submit</button>
+</form>

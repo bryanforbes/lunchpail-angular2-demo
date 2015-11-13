@@ -1,0 +1,22 @@
+:host {
+	box-sizing: border-box;
+	display: block;
+	height: 100vh;
+	position: relative;
+	width: 100vw;
+}
+
+:host *
+:host *::before,
+:host *::after {
+	box-sizing: inherit;
+}
+
+:host > nav {
+	background-color: gray;
+	height: 100px;
+}
+
+:host > main {
+	height: calc(100% - 100px);
+}
