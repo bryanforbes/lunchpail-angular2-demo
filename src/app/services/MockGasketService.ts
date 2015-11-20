@@ -1,6 +1,7 @@
 import { provide, Observable } from 'angular2/angular2';
 import Gasket from '../models/Gasket';
 import GasketService from './GasketService';
+import { ReplaySubject } from '@reactivex/rxjs';
 
 export default class MockGasketService extends GasketService {
 	private gaskets: Map<number, Gasket>;
@@ -23,7 +24,9 @@ export default class MockGasketService extends GasketService {
 			}
 			gaskets.push(result.value);
 		}
-		return Observable.of(gaskets).publishReplay(1, Infinity).refCount();
+		const o = new ReplaySubject<Gasket[]>(1);
+		o.next(gaskets);
+		return o;
 	}
 
 	getGasket(index: number | string): Observable<Gasket> {
@@ -34,7 +37,9 @@ export default class MockGasketService extends GasketService {
 		else {
 			indexAsNumber = index;
 		}
-		return Observable.of(this.gaskets.get(indexAsNumber)).publishReplay(1, Infinity).refCount();
+		const o = new ReplaySubject<Gasket>(1);
+		o.next(this.gaskets.get(indexAsNumber));
+		return o;
 	}
 }
 

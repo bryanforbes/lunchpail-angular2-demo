@@ -1,0 +1,4 @@
+[
+	{ "id": 0, "innerDiameter": 5, "outerDiameter": 20 },
+	{ "id": 1, "innerDiameter": 10, "outerDiameter": 50 }
+]

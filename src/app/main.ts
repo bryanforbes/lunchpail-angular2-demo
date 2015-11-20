@@ -5,7 +5,7 @@ import { ELEMENT_PROBE_PROVIDERS } from 'angular2/angular2';
 import Index from './views/Index';
 import Next from './views/Next';
 import GasketViewer from './views/GasketViewer';
-import { GASKET_SERVICE_PROVIDER } from './services/AsyncGasketService';
+import { GASKET_SERVICE_PROVIDER } from './services/HttpGasketService';
 
 export class AppUrlResolver extends UrlResolver {
 	resolve(baseUrl: string, url: string): string {

@@ -24,7 +24,7 @@ gulp.task('build.ts', function () {
 });
 
 gulp.task('build.assets', function () {
-	return gulp.src([ 'src/**/*.css', 'src/**/*.html' ])
+	return gulp.src([ 'src/**/*.css', 'src/**/*.html', 'src/**/*.json' ])
 			   .pipe(gulp.dest('dist'))
 	;
 });

@@ -10,4 +10,4 @@
 		[outer-diameter]="(gasket | async)?.outerDiameter"
 		[inner-diameter]="(gasket | async)?.innerDiameter"></gasket>
 </div>
-<div *ng-if="!(gasket | async)">Loading</div>
+<div *ng-if="gasket && !(gasket | async)">Loading</div>

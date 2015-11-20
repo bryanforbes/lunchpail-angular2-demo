@@ -2,6 +2,7 @@ import { provide, Observable } from 'angular2/angular2';
 import Gasket from '../models/Gasket';
 import GasketService from './GasketService';
 import MockGasketService from './MockGasketService';
+import { ReplaySubject } from '@reactivex/rxjs';
 
 export default class AsyncGasketService extends MockGasketService {
 	constructor() {
@@ -9,23 +10,23 @@ export default class AsyncGasketService extends MockGasketService {
 	}
 
 	getGaskets(): Observable<Gasket[]> {
-		return Observable.create((observer) => {
-			super.getGaskets().subscribe((gasket) => {
-				setTimeout(() => {
-					observer.next(gasket);
-				}, 2000);
+		const o = new ReplaySubject<Gasket[]>(1);
+		setTimeout(() => {
+			super.getGaskets().subscribe((gaskets) => {
+				o.next(gaskets);
 			});
-		}).publishReplay(1, Infinity).refCount();
+		}, 2000);
+		return o;
 	}
 
 	getGasket(index: number | string): Observable<Gasket> {
-		return Observable.create((observer) => {
+		const o = new ReplaySubject<Gasket>(1);
+		setTimeout(() => {
 			super.getGasket(index).subscribe((gasket) => {
-				setTimeout(() => {
-					observer.next(gasket);
-				}, 2000);
+				o.next(gasket);
 			});
-		}).publishReplay(1, Infinity).refCount();
+		}, 2000);
+		return o;
 	}
 }
 
