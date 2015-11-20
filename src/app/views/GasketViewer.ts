@@ -16,6 +16,7 @@ export default class GasketViewer {
 	private gasketService: GasketService;
 	private gaskets: Observable<Gasket[]>;
 	private gasket: Observable<Gasket>;
+	private loading: boolean = false;
 
 	constructor(gasketService: GasketService) {
 		this.gasketService = gasketService;
@@ -40,6 +41,10 @@ export default class GasketViewer {
 				this.gaskets = this.gasketService.getGaskets();
 			}
 			this.gasket = this.gasketService.getGasket(id);
+			this.loading = true;
+			this.gasket.subscribe(() => {
+				this.loading = false;
+			});
 		}
 		else {
 			this.gaskets = this.gasketService.getGaskets();

@@ -5,6 +5,7 @@ import { ELEMENT_PROBE_PROVIDERS } from 'angular2/angular2';
 import Index from './views/Index';
 import Next from './views/Next';
 import GasketViewer from './views/GasketViewer';
+import GasketCreator from './views/GasketCreator';
 import { GASKET_SERVICE_PROVIDER } from './services/HttpGasketService';
 
 export class AppUrlResolver extends UrlResolver {
@@ -27,7 +28,8 @@ export class AppUrlResolver extends UrlResolver {
 	{ path: '/index', component: Index, as: 'Index' },
 	{ path: '/next', component: Next, as: 'Next' },
 	{ path: '/gaskets', component: GasketViewer, as: 'GasketList' },
-	{ path: '/gaskets/:id', component: GasketViewer, as: 'GasketItem' }
+	{ path: '/gaskets/creator/...', component: GasketCreator, as: 'GasketCreator' },
+	{ path: '/gaskets/:id', component: GasketViewer, as: 'GasketItem' },
 ])
 export class App { }
 
